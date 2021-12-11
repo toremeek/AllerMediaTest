@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import styled from "styled-components";
 import { Filter } from "./Filter";
-import {raceData} from "../data/data.js"
+import { raceData } from "../data/data.js";
 const ListDiv = styled.div`
   width: 70%;
   margin: 2rem auto;
@@ -10,7 +10,7 @@ const ListDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  
+
   li {
     width: 100%;
     background-color: white;
@@ -27,14 +27,14 @@ const ListDiv = styled.div`
       width: 100%;
       text-align: center;
       font-size: 1rem;
-      :nth-child(3){
+      :nth-child(3) {
         color: red;
         padding: 0 0 0 20px;
       }
     }
-  :hover {
-    background-color: grey;
-    
+    :hover {
+      background-color: grey;
+    }
   }
 `;
 
@@ -102,7 +102,9 @@ const Resultater = () => {
                 <p>{runners.person.country}</p>
                 {distanse === "10km" && runners.totalWorldCupPoints < 0 ? (
                   <p>Poeng: {runners.totalWorldCupPoints}</p>
-                ) : <p>{runners.person.country}</p>}
+                ) : (
+                  <p>{runners.person.country}</p>
+                )}
               </motion.li>
             ))}
           </ListDiv>
@@ -120,7 +122,9 @@ const Resultater = () => {
                 <p>{runners.timeDifference}</p>
                 {distanse === "10km" && runners.totalWorldCupPoints > 0 ? (
                   <p>Poeng: {runners.totalWorldCupPoints}</p>
-                ) : <p>{runners.person.country}</p>}
+                ) : (
+                  <p>{runners.person.country}</p>
+                )}
               </motion.li>
             ))}
           </ListDiv>
@@ -136,7 +140,7 @@ const Resultater = () => {
                       transition={{
                         type: "spring",
                         stiffness: 100,
-                        duration: 1
+                        duration: 1,
                       }}
                       key={runners.uuid}
                     >
