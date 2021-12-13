@@ -92,9 +92,18 @@ const Resultater = () => {
           <ListDiv>
             {raceData?.locations[distanse].slice(0, antall).map((runners) => (
               <motion.li
-                initial={{ opacity: 0, scale: 0.5, y: -randomNum }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 100, duration: 1 }}
+                initial={{
+                  opacity: 0,
+                  scale: 0.5,
+                  x: randomNum,
+                  y: -randomNum,
+                }}
+                animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  duration: 1,
+                }}
                 key={runners.uuid}
               >
                 <p>{runners.person.name}</p>

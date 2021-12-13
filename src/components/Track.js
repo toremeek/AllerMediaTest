@@ -7,11 +7,7 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
   const { width } = useWindowDimensions();
 
   const getImage = () => {
-    if (width > 700) {
-      return track;
-    } else {
-      return smallTrack;
-    }
+    return width > 700 ? track : smallTrack;
   };
   const image = getImage();
 
@@ -24,15 +20,20 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
           ? places.map((place, i) => (
               <motion.button
                 className={distanse === place ? "aktiv" : null}
-                whileHover={{ scale: 1.3 }}
-                whileTap={{ scale: 0.9, rotate: 45 }}
-                initial={{ opacity: 0, y: -200, rotate: 180 }}
+                initial={{
+                  opacity: 0,
+                  y: -200,
+                  rotate: 180,
+                }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 150,
-                  duration: 2
+                  delay: Math.random(),
+                  duration: 2,
                 }}
+                whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9, rotate: 45 }}
                 key={i}
                 type="button"
                 value={place}
@@ -50,9 +51,9 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
           animate={{ scale: 1, y: 0 }}
           transition={{
             type: "spring",
-            dealy: 1,
+            dealy: Math.random() + 1,
             stiffness: 100,
-            duration: 3
+            duration: 3.5,
           }}
         />
         <motion.img
@@ -63,9 +64,9 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
           animate={{ scale: 1, y: 0 }}
           transition={{
             type: "spring",
-            delay: 2.5,
+            delay: Math.random() + 0.4,
             stiffness: 200,
-            duration: 2.9
+            duration: 3.5,
           }}
         />
         <motion.img
@@ -74,7 +75,12 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
           src={tree}
           initial={{ scale: 0, x: -500 }}
           animate={{ scale: 1, x: 0 }}
-          transition={{ type: "spring", delay: 2, stiffness: 100, duration: 2 }}
+          transition={{
+            type: "spring",
+            delay: Math.random(),
+            stiffness: 100,
+            duration: 2.9,
+          }}
         />
       </section>
     </>

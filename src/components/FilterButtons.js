@@ -36,7 +36,7 @@ export const FilterButtons = ({
   distanse,
   handleCountryChange,
   land,
-  antall
+  antall,
 }) => {
   return (
     <>
@@ -44,7 +44,7 @@ export const FilterButtons = ({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 3 }}
         >
           <motion.button
             className={antall === "3" ? "activeButton" : null}
