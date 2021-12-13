@@ -25,14 +25,20 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
                   y: -200,
                   rotate: 180,
                 }}
-                animate={{ opacity: 1, y: 0, rotate: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 150,
-                  delay: Math.random(),
-                  duration: 2,
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  rotate: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 150,
+                    delay: Math.random(),
+                    duration: 2,
+                  },
                 }}
-                whileHover={{ scale: 1.3 }}
+                whileHover={{
+                  scale: 1.3,
+                }}
                 whileTap={{ scale: 0.9, rotate: 45 }}
                 key={i}
                 type="button"
