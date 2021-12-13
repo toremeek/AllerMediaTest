@@ -6,7 +6,7 @@ import "./styles.scss";
 import Resultater from "./components/Resultater";
 
 const StyledSection = styled.section`
-  width: 90%;
+  width: 70%;
   margin: 1rem auto -3rem auto;
   text-align: center;
   img {
@@ -18,7 +18,8 @@ const StyledSection = styled.section`
   }
   h1 {
     z-index: 1;
-    width: 100%;
+    width: 70%;
+    margin: auto;
     text-align: center;
     padding: 0;
     text-shadow: -25px 10px 10px #ced0d3;
@@ -28,7 +29,6 @@ const StyledSection = styled.section`
     color: white;
   }
   @media screen and (max-width: 700px) {
-    margin: 1rem auto -2rem auto;
     h1 {
       font-size: 1.5rem;
       margin: -1rem auto 0 auto;

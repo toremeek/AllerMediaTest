@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Filter } from "./Filter";
 import { raceData } from "../data/data.js";
+const StyledSection = styled(motion.section)`
+  width: 100%;
+  margin: auto;
+  padding: 0;
+`;
 const ListDiv = styled.div`
   width: 70%;
   margin: 2rem auto;
@@ -10,12 +15,11 @@ const ListDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
   li {
     width: 100%;
     background-color: white;
     display: flex;
-    margin: 0;
+    margin: 0 auto;
     border: 2px solid black;
     padding: 0 15px;
     justify-content: space-around;
@@ -26,6 +30,8 @@ const ListDiv = styled.div`
     p {
       width: 100%;
       text-align: center;
+      padding: 0;
+
       font-size: 1rem;
       :nth-child(3) {
         color: red;
@@ -34,6 +40,12 @@ const ListDiv = styled.div`
     }
     :hover {
       background-color: grey;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    width: 90%;
+    li {
+      width: 90%;
     }
   }
 `;
@@ -92,7 +104,7 @@ const Resultater = () => {
         places={places}
       />
 
-      <motion.section>
+      <StyledSection>
         <ListDiv>
           {runners.map((runner) => (
             <motion.li
@@ -121,7 +133,7 @@ const Resultater = () => {
             </motion.li>
           ))}
         </ListDiv>
-      </motion.section>
+      </StyledSection>
     </>
   );
 };
