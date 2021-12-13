@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import snowFlake from "./img/snowflake.png";
-import Snow from "./components/Snow"
+import Snow from "./components/Snow";
 import "./styles.scss";
 import Resultater from "./components/Resultater";
 

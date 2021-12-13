@@ -32,14 +32,14 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
                   transition: {
                     type: "spring",
                     stiffness: 150,
-                    delay: Math.random(),
+                    delay: Math.random() + 0.5,
                     duration: 2,
                   },
                 }}
                 whileHover={{
                   scale: 1.3,
                 }}
-                whileTap={{ scale: 0.9, rotate: 45 }}
+                whileTap={{ scale: 0.9 }}
                 key={i}
                 type="button"
                 value={place}
