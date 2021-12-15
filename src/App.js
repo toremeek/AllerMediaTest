@@ -7,7 +7,7 @@ import Resultater from "./components/Resultater";
 
 const StyledSection = styled.section`
   width: 70%;
-  margin: 1rem auto -3rem auto;
+  margin: 5rem auto -3rem auto;
   text-align: center;
   img {
     width: 8%;

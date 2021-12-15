@@ -3,6 +3,8 @@ import smallTrack from "../img/trackSmall.png";
 import tree from "../img/tree.png";
 import { motion } from "framer-motion";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+
+
 export const Track = ({ places, handleDistanceChange, distanse }) => {
   const { width } = useWindowDimensions();
 
@@ -15,9 +17,8 @@ export const Track = ({ places, handleDistanceChange, distanse }) => {
     <>
       <section className="trackSection">
         <img className="track" alt="bilde med distanser" src={image} />
-
         {places?.length > 0
-          ? places.map((place, i) => (
+          ? places?.map((place, i) => (
               <motion.button
                 className={distanse === place ? "aktiv" : null}
                 initial={{

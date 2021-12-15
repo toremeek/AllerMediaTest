@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Filter } from "./Filter";
 import { raceData } from "../data/data.js";
+import { Modal } from "./Modal";
 const StyledSection = styled(motion.section)`
   width: 100%;
   margin: auto;
@@ -24,22 +25,19 @@ const ListDiv = styled.div`
     padding: 0 15px;
     justify-content: space-around;
     list-style: none;
+    cursor: pointer;
     :nth-child(even) {
-      background-color: lightgrey;
+      background-color: lightblue;
     }
     p {
       width: 100%;
       text-align: center;
       padding: 0;
-
       font-size: 1rem;
       :nth-child(3) {
         color: red;
         padding: 0 0 0 20px;
       }
-    }
-    :hover {
-      background-color: grey;
     }
   }
   @media screen and (max-width: 700px) {
@@ -51,12 +49,13 @@ const ListDiv = styled.div`
 `;
 
 const Resultater = () => {
-  const places = Object.keys(raceData.locations);
-  const [distanse, setDistanse] = useState(places[0]);
+  const places = Object.keys(raceData?.locations);
+  const [distanse, setDistanse] = useState(places.at(-1));
   const [land, setLand] = useState(false);
   const [antall, setAntall] = useState(10);
   const [runners, setRunners] = useState([]);
-
+  const [modal, setModal] = useState(false)
+const [modalData, setModalData] = useState()
   const handleDistanceChange = (event) => {
     setDistanse(event.target.value);
   };
@@ -74,14 +73,16 @@ const Resultater = () => {
 
   const randomNum = Math.floor(Math.random() * (200 - 30 + 1) + 30);
 
-  //generer liste over løpere
+  //generer lister over løpere
   const makeList = () => {
     setRunners([]);
+    //hvis Norge er valgt
     if (land) {
       const runner = raceData.locations[distanse]
         .slice(0, antall)
         .filter((item) => item.person.country === "Norway");
       setRunners(runner);
+      //ellers
     } else {
       const runner = raceData.locations[distanse].slice(0, antall);
       setRunners(runner);
@@ -91,8 +92,19 @@ const Resultater = () => {
     makeList();
   }, [land, antall, distanse]);
 
+  const showModal = ({runner}) => {
+   const id = runner.person.uuid
+    const list = []
+    for (const [key, value] of Object.entries(raceData.locations)) {
+      const user = value.filter((item) => item.person.uuid === id);
+      list.push({ place: key, runner: user });
+    }
+    setModal(true)
+    return setModalData(list)
+  }
+
   return (
-    <>
+    <>    
       <Filter
         handleDistanceChange={handleDistanceChange}
         handleSetAntall={handleSetAntall}
@@ -106,8 +118,9 @@ const Resultater = () => {
 
       <StyledSection>
         <ListDiv>
-          {runners.map((runner) => (
+          {runners?.length > 0 ? runners?.map((runner) => (
             <motion.li
+            onClick={() => showModal({runner})}
               initial={{
                 opacity: 0,
                 scale: 0.5,
@@ -131,9 +144,12 @@ const Resultater = () => {
                 <p>{runner.person.country}</p>
               )}
             </motion.li>
-          ))}
+          )):<p>Ingen resultater å vise</p>}
         </ListDiv>
       </StyledSection>
+      {modal && modalData?.length > 0 ?
+    <Modal setModal={setModal} modalData={modalData}/> : null
+    }
     </>
   );
 };

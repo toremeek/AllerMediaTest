@@ -39,7 +39,6 @@ export const FilterButtons = ({
   antall,
 }) => {
   return (
-    <>
       <ButtonSection>
         <motion.div
           initial={{ opacity: 0 }}
@@ -87,6 +86,5 @@ export const FilterButtons = ({
           </motion.button>
         </motion.div>
       </ButtonSection>
-    </>
   );
 };
